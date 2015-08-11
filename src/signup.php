@@ -4,7 +4,7 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title>Sign-Up</title>
+		<title>Sign Up</title>
 		<link rel="stylesheet" type="text/css" href="style.css">
 	</head>
 
