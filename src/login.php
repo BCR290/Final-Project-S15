@@ -6,7 +6,7 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title>Sign-In</title>
+		<title>Log in</title>
 		<link rel="stylesheet" type="text/css" href="style.css">
 		<script src="business_logic.js"> </script>
 	</head>
