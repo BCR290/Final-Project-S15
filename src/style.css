@@ -77,3 +77,17 @@ fieldset{
 #signup_button:hover{
 	background-color: #FF7171;
 }
+
+#signup{
+	float:center;
+	margin-left: 180px;
+	background-color: #008F00;
+	color:white;
+	font-family: 'Yanone Kaffeesatz';
+	font-weight: 550;
+    font-size: 1.2em;
+
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+}
