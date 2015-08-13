@@ -2,7 +2,7 @@
 	include("common.php");
 
 	if ($_SERVER['REQUEST_METHOD'] == 'POST' ) {
-		//print_r($_POST);
+		print_r($_POST);
 		if($_POST['submit'] == 'Log-In') {
 			$dbc = getdbc();
 			//
@@ -53,7 +53,6 @@
 		<h1 id = "title">Welcome to our site!</h1>
 		<div id="Sign-In">
 			<fieldset>
-				<form method="POST">
 					<br><input type="text" name="user" size="40" id="username" placeholder="Username"><br>
 					<br><input type="password" name="pass" size="40" id="password" placeholder="Password"><br><br>
 					<input id="signup_button" type="submit" name="submit" value="Sign-Up!">
