@@ -162,3 +162,20 @@ fieldset{
     border-radius: 8px;
     height: 100%;
 }
+#home{
+	float:center;
+	background-color: #008F00;
+	color:white;
+	font-family: 'Yanone Kaffeesatz';
+	font-weight: 550;
+    font-size: 0.7em;
+    width: 500px;
+  
+
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+}
+#home:hover{
+	background-color: #70DB70;
+}
