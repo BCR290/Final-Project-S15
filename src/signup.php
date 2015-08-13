@@ -1,13 +1,17 @@
 <?php
 	include("common.php");
 
-	print_r($_GET);
+	// add SQL thing
+
+	
+
 ?>
 <!DOCTYPE HTML>
 <html>
 	<head>
 		<title>Sign Up</title>
 		<link rel="stylesheet" type="text/css" href="style.css">
+		<script src="business_logic.js"></script>
 	</head>
 
 	<body>
@@ -16,7 +20,8 @@
 				<legend>Sign-Up</legend>
 
 				<label for='username' >UserName*:</label>
-				<input type='text' name='username' id='username' maxlength="50" id="username_create"/><br>
+				<input type='text' name='username' id='username' maxlength="50" id="username_create" onkeyup="check_av(this.value)"/>
+				<span id="error"></span><br>
 
 				<label for='password' >Password*:</label>
 				<input type='password' name='password' id='password' maxlength="50" id="p1" /><br>
