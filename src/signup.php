@@ -3,7 +3,9 @@
 
 	// add SQL thing
 	$avaliable = false;
-	$usernameError = $passwordError = $firstnameError = $lastnameError = false;
+	$usernameError = $password1Error = $password2Error = $firstnameError = $lastnameError = false;
+
+	print_r($_POST);
 
 	if ($_POST["username"] == null) {
 		$usernameError = true;
@@ -18,6 +20,7 @@
 	if ($_POST["password"] == null) {
 		$passwordError = true;
 	} 
+
 	if ($_POST["firstname"] == null) {
 		$firstError = true;
 	} 
@@ -27,7 +30,7 @@
 	if (!$usernameError && !$passwordError && !$firstnameError && !$lastnameError && $avaliable) {
 		// add them to the database and go to there page 
 		$dbc = getdbc();
-		$addUser -> bind_param("ssss", $username, $password $lastname $firstname);
+		$addUser -> bind_param("ssss", $username, $password, $lastname, $firstname);
 		$username = $_POST["username"];
 		$password = $_POST["password"];
 		$firstname = $_POST["firstname"];
@@ -47,30 +50,27 @@
 
 	<body>
 		<form id='sign-up' method="POST">
-			<fieldset>
+			<fieldset id='brad' >
 				<legend>Sign-Up</legend>
 
-				<label for='username' >UserName*:</label>
-				<input type='text' name='username' id='username' maxlength="50" id="username_create" onkeyup="check_av(this.value)"/>
+				<label for='username' ></label>
+				<input type='text' name='username' id='uname' maxlength="50" id="username_create" onkeyup="check_av(this.value)" placeholder="User Name"/>
 				<span id="error"></span><br>
 
-				<label for='password' >Password*:</label>
-				<input type='password' name='password' id='password' maxlength="50" id="p1" /><br>
+				<label for='password' ></label>
+				<input type='password' name='password1' id='pword' maxlength="50" placeholder="Password"/><br>
 
-				<label for='password' >Re-enter your Password*:</label>
-				<input type='password' name='password' id='Re-password' maxlength="50" id="p2" /><br>
-
+				<label for='password' ></label>
+				<input type='password' name='password2' id='Re-password' maxlength="50" placeholder="Re-enter your Password"/><br>
 				
-				<label for='Fname' >Your First Name*: </label>
-				<input type='text' name='Fname' id='Fname' maxlength="50" id="firstname" /><br>
+				<label for='Fname' ></label>
+				<input type='text' name='Fname' id='Fname' maxlength="50" id="firstname" placeholder="Your First Name"/><br>
 				
+				<label for='Lname' ></label>
+				<input type='text' name='Lname' id='Lname' maxlength="50" id="lastname" placeholder="Your Last Name" /><br><br>
 
-				<label for='Lname' >Your Last Name*: </label>
-				<input type='text' name='Lname' id='Lname' maxlength="50" id="lastname" /><br>
-				 
+				<input type='submit' name='submit' value='Sign-Up' id='signup' />
 
-				<input type='submit' name='submit' value='Sign-Up' id="signup" />
-			 
 			</fieldset>
 		</form>
 	</body>
