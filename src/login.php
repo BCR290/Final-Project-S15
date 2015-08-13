@@ -50,8 +50,8 @@
 		<div id="Sign-In">
 			<fieldset>
 				<form method="POST">
-					<br><input type="text" name="user" size="40" id="username" placeholder="Username"><br>
-					<br><input type="password" name="pass" size="40" id="password" placeholder="Password"><br><br>
+					<br><input class = 'logIN' type="text" name="user" size="40"  placeholder="Username"><br>
+					<br><input class = 'logIN' type="password" name="pass" size="40" placeholder="Password"><br><br>
 					<input id="signup_button" type="submit" name="submit" value="Sign-Up!">
 					<input id="login_button" type="submit" name="submit" value="Log-In">
 				</form>
