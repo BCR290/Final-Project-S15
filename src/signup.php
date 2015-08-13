@@ -2,22 +2,39 @@
 	include("common.php");
 
 	// add SQL thing
-	$given_username = $_POST["username"];
-
 	$avaliable = false;
+	$usernameError = $passwordError = $firstnameError = $lastnameError = false;
 
-	foreach ($theFoundUsers as $username => $name) {
-		if(strtolower($given_username) === strtolower($name)) {
-			$avaliable = true;
+	if ($_POST["username"] == null) {
+		$usernameError = true;
+	} else {
+		$given_username = $_POST["username"];
+		foreach ($theFoundUsers as $username => $name) {
+			if(strtolower($given_username) === strtolower($name)) {
+				$avaliable = true;
+			}
 		}
 	}
-
-	if ($avaliable) {
-		if ($_POST['password'] == null) {
-
-		} else if 
-
+	if ($_POST["password"] == null) {
+		$passwordError = true;
 	} 
+	if ($_POST["firstname"] == null) {
+		$firstError = true;
+	} 
+	if ($_POST["lastname"] == null) {
+		$lastnameError = true;
+	} 
+	if (!$usernameError && !$passwordError && !$firstnameError && !$lastnameError && $avaliable) {
+		// add them to the database and go to there page 
+		$dbc = getdbc();
+		$addUser -> bind_param("ssss", $username, $password $lastname $firstname);
+		$username = $_POST["username"];
+		$password = $_POST["password"];
+		$firstname = $_POST["firstname"];
+		$lastname = $_POST["lastname"];
+		$addUser -> execute();
+	}
+
 
 ?>
 <!DOCTYPE HTML>
@@ -30,7 +47,7 @@
 
 	<body>
 		<form id='sign-up' method="POST">
-			<fieldset >
+			<fieldset>
 				<legend>Sign-Up</legend>
 
 				<label for='username' >UserName*:</label>
