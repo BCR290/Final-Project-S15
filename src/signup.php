@@ -69,11 +69,11 @@
 
 	<body>
 		<form id='sign-up' method="POST">
-			<fieldset id='brad' >
+			<fieldset >
 				<legend>Sign-Up</legend>
 
 				<label for='username' ></label>
-				<input type='text' name='username' id='uname' maxlength="50" id="username_create" onkeyup="check_av(this.value)" placeholder="User Name"/>
+				<input class = 'signUP' type='text' name='username'  maxlength="50" id="username_create" onkeyup="check_av(this.value)" placeholder="User Name"/>
 				<span id="avaliable"></span>
 				<?php
 				if ($usernameError) {
@@ -85,7 +85,7 @@
 				?>
 				<br>
 				<label for='password' ></label>
-				<input type='password' name='password1' id='pword' maxlength="50" placeholder="Password"/>
+				<input class = 'signUP' type='password' name='password1' maxlength="50" placeholder="Password"/>
 				<?php
 				if ($password1Error) {
 					showError();
@@ -93,7 +93,7 @@
 				?>
 				<br>
 				<label for='password' ></label>
-				<input type='password' name='password2' id='Re-password' maxlength="50" placeholder="Re-enter your Password"/>
+				<input class = 'signUP' type='password' name='password2' maxlength="50" placeholder="Re-enter your Password"/>
 				<?php
 				if ($password2Error) {
 					showError();
@@ -105,7 +105,7 @@
 				?>
 				<br>
 				<label for='Fname' ></label>
-				<input type='text' name='Fname' id='Fname' maxlength="50" id="firstname" placeholder="Your First Name"/>
+				<input class ='signUP' type='text' name='Fname'  maxlength="50" id="firstname" placeholder="Your First Name"/>
 				<?php
 				if ($firstnameError) {
 					showError();
@@ -113,7 +113,7 @@
 				?>
 				<br>
 				<label for='Lname' ></label>
-				<input type='text' name='Lname' id='Lname' maxlength="50" id="lastname" placeholder="Your Last Name" />
+				<input class = 'signUP' type='text' name='Lname'  maxlength="50" id="lastname" placeholder="Your Last Name" />
 				<?php
 				if ($lastnameError) {
 					showError();
