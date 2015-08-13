@@ -2,8 +2,22 @@
 	include("common.php");
 
 	// add SQL thing
+	$given_username = $_POST["username"];
 
-	
+	$avaliable = false;
+
+	foreach ($theFoundUsers as $username => $name) {
+		if(strtolower($given_username) === strtolower($name)) {
+			$avaliable = true;
+		}
+	}
+
+	if ($avaliable) {
+		if ($_POST['password'] == null) {
+
+		} else if 
+
+	} 
 
 ?>
 <!DOCTYPE HTML>
@@ -15,7 +29,7 @@
 	</head>
 
 	<body>
-		<form id='sign-up'>
+		<form id='sign-up' method="POST">
 			<fieldset >
 				<legend>Sign-Up</legend>
 
@@ -37,9 +51,6 @@
 				<label for='Lname' >Your Last Name*: </label>
 				<input type='text' name='Lname' id='Lname' maxlength="50" id="lastname" /><br>
 				 
-
-				 
-
 
 				<input type='submit' name='submit' value='Sign-Up' id="signup" />
 			 
