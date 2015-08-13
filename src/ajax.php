@@ -1,11 +1,5 @@
 <?php
 	include("common.php");
-
-	$dbc = getdbc();
-	$users = $dbc -> prepare("SELECT username FROM USERS_2 WHERE 1");
-	$users->execute();
-	$result = $users->get_result();
-	$theFoundUsers = $result->fetch_array(MYSQLI_ASSOC);
 	
 	$given = $_REQUEST["user_try"];
 
