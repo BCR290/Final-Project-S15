@@ -22,7 +22,6 @@
 	$result = $users->get_result();
 	$theFoundUsers = $result->fetch_array(MYSQLI_ASSOC);
 
-	$addUser = $dbc -> prepare("INSERT INTO USERS_2 VALUES(? ? ? ?)");
 
 
 ?>
