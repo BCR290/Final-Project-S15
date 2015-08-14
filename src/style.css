@@ -116,3 +116,41 @@ fieldset{
 
 
 
+
+/*for the search.php*/
+
+.buttonInPage{
+	float:right;		
+	background-color: #0066FF;
+	color:white;
+	font-family: 'Yanone Kaffeesatz';
+	margin-right:3%;
+    font-size: 1.2em;
+    border-radius: 8px;
+}
+
+.buttonInPage:hover{
+	background-color:#6A9DEB;
+
+}
+
+#search{
+	margin-left: 3%;
+	border-radius: 8px;
+    height: 5%;
+    font-size: 20px;
+    width:30%;
+}
+
+#searchBtn{
+	background-color: #0066FF;
+	color:white;	
+	font-family: 'Yanone Kaffeesatz';
+    font-size: 1.3em;
+    border-radius: 9px;
+}
+
+#searchBtn:hover{
+	background-color:#6A9DEB;
+
+}
