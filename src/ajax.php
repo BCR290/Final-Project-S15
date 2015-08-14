@@ -29,9 +29,12 @@
 					<span><?=$termsFound["id"]?></span>		
 				</div>
 
-
 				<ol class="classes_in_term">
-					
+					<?php
+						$showTheClasses = $dbc -> prepare("SELECT CLASSES.description, CLASSES.title, URLS.url FROM CLASSES INNER JOIN CLASSES_TERM ON CLASSES.id = CLASSES_TERM.class_id INNER JOIN URLS ON CLASSES.url_id = URLS.id INNER JOIN TERMS ON CLASSES_TERM.term_id = TERMS.id WHERE TERMS.id = ?");
+
+
+					?>
 					<li>
 						<form>
 							<label>Title:</label>
@@ -40,15 +43,67 @@
 							<input type="text" id="URL_input">
 							<label>Description:</label>
 							<input type="text" id="desc_input">
-							<input type="button" value="add Class" class="<?php echo htmlspecialchars($termsFound["id"]); ?>" onclick="addClass(<?=$termsFound["id"]?>)"> 
+							<input type="button" value="add URL" class="<?php echo htmlspecialchars($termsFound["id"]); ?>" onclick="addClass(<?=$termsFound["id"]?>)"> 
 						</form>
 					</li>
 				</ol> 
-
-
 			</div>
 			<?php	
 		}
+	}
+
+	if($action == "createclass") {
+		$getClassId = $dbc -> prepare("SELECT id FROM URLS WHERE URL = ?");
+		$getClassId -> bind_param("s", $url);
+		$url = $_REQUEST["URL"];
+		$getClassId -> execute();
+		$result = $getClassId->get_result();
+		$idsFound = $result->fetch_array(MYSQLI_ASSOC);
+		$actualId = "";
+		if (count($idsFound) == 1) {
+			$actualId = $idsFound["id"];
+			echo "id found: $actualId";
+		} else {
+			$createAurl = $dbc -> prepare("INSERT INTO URLS (url) VALUES (?)");
+			$createAurl -> bind_param("s", $url);
+			$url = $_REQUEST["URL"];
+			$createAurl -> execute();
+			$getClassId -> execute();
+			$result = $getClassId->get_result();
+			$founcId = $result->fetch_array(MYSQLI_ASSOC);
+			$actualId = $founcId["id"];
+			echo "id created: $actualId";
+		}
+
+		
+
+		$createclass = $dbc -> prepare("INSERT INTO CLASSES (title, description, url_id) VALUES (?, ?, ?)");
+		$createclass -> bind_param("sss", $title, $desc, $url);
+		$title = $_REQUEST["title"];
+		$desc = $_REQUEST["desc"];
+		$url = $actualId;
+		$createclass -> execute();
+
+		
+		$getClassId = $dbc -> prepare("SELECT id FROM CLASSES WHERE url_id = ? AND title = ? AND description = ?");
+		$getClassId -> bind_param("sss", $url, $title, $desc);
+		$url = $actualId;
+		$title = $_REQUEST["title"];
+		$desc = $_REQUEST["desc"];
+		$getClassId -> execute();
+		$result = $getClassId->get_result();
+		$idsFound = $result->fetch_array(MYSQLI_ASSOC);
+		$actualclassId = $idsFound["id"];
+
+		echo "stupid ass class $actualclassId";
+
+		$createclassterm = $dbc -> prepare("INSERT INTO CLASSES_TERM (class_id, term_id) VALUES (?, ?)");
+		$createclassterm -> bind_param("ss", $class_id, $term_id);
+		$class_id = $actualclassId;
+		$term_id = $_REQUEST["term"];
+		$createclassterm -> execute();
+
+		//echo "poop";
 	}
 	
 	$given = $_REQUEST["user_try"];
