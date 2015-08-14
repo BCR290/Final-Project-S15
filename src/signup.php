@@ -85,7 +85,7 @@
 	<body>
 		<form id='sign-up' method="POST">
 			<fieldset >
-				<legend>Sign-Up</legend>
+				<h1 class = 'page_title' >Sign Up Right Now!!</h1>
 
 				<label for='username' ></label>
 				<input class = 'signUP' type='text' name='username'  maxlength="50" id="username_create" onkeyup="check_av(this.value)" placeholder="User Name"/>
