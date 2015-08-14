@@ -23,9 +23,9 @@
 			?>
 			<div class="one_term">
 				<div class="term_header">
-					<span class="term_titles"><?=$termsFound["term_title"]?></span>
-					<span class="term_year"><?=$termsFound["year"]?></span>
-					<span class="term_season"><?=$termsFound["season"]?></span>
+					<span id="term_titles"><?=$termsFound["term_title"]?></span>
+					<span id="term_year"><?=$termsFound["year"]?></span>
+					<span id="term_season"><?=$termsFound["season"]?></span>
 					<span><?=$termsFound["id"]?></span>		
 				</div>
 
@@ -48,11 +48,11 @@
 					<li>
 						<form>
 							<label>Title:</label>
-							<input type="text" id="class_input">
+							<input type="text" id="class_input_<?php echo htmlspecialchars($termsFound["id"]); ?>">
 							<label>URL:</label> 
-							<input type="text" id="URL_input">
+							<input type="text" id="URL_input_<?php echo htmlspecialchars($termsFound["id"]); ?>">
 							<label>Description:</label>
-							<input type="text" id="desc_input">
+							<input type="text" id="desc_input_<?php echo htmlspecialchars($termsFound["id"]); ?>">
 							<input type="button" value="add URL" class="<?php echo htmlspecialchars($termsFound["id"]); ?>" onclick="addClass(<?=$termsFound["id"]?>)"> 
 						</form>
 					</li>
@@ -70,7 +70,7 @@
 		$result = $getClassId->get_result();
 		$idsFound = $result->fetch_array(MYSQLI_ASSOC);
 		$actualId = "";
-		if (count($idsFound) == 1) {
+		if (count($idsFound) >= 1) {
 			$actualId = $idsFound["id"];
 			echo "id found: $actualId";
 		} else {

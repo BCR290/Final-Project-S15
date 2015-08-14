@@ -86,9 +86,9 @@
 				}
 			}
 		}
-		var title = document.getElementById("class_input").value;
-		var URL	= document.getElementById("URL_input").value;
-		var desc = document.getElementById("desc_input").value;
+		var title = document.getElementById("class_input_" + term_id).value;
+		var URL	= document.getElementById("URL_input_" + term_id).value;
+		var desc = document.getElementById("desc_input_" + term_id).value;
 		var data = "&title=" + title + "&URL=" + URL + "&desc=" + desc;
 		xhr.open("GET", "ajax.php?action=createclass" + data + "&term=" + term_id);
 		xhr.send();
