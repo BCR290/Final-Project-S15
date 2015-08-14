@@ -21,7 +21,7 @@
 			<input type='submit' name='submit' value='Home Page' class = 'buttonInPage' /><br><br><br>
 			
 			<fieldset id='search_page'>
-				<br><input type='text' name='searchBox' id='search' placeholder = "Enter the key word here" />
+				<br><input type='text' name='searchBox' id='searchBox' placeholder = "Enter the key word here" />
 				<input type='submit' name='searchBtn' value='SEARCH' id = 'searchBtn'/><br><br>
 
 
