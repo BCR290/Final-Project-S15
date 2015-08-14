@@ -28,17 +28,24 @@
 					<span class="term_season"><?=$termsFound["season"]?></span>
 					<span><?=$termsFound["id"]?></span>		
 				</div>
-				<ul class="classes_in_term">
-					<form>
-						<label>Title:</label>
-						<input type="text" id="class_input">
-						<label>URL:</label> 
-						<input type="text" id="URL_input">
-						<label>Description:</label>
-						<input type="text" id="desc_input">
-						<input type="button" value="add Class" onclick="addClass"> 
-					</form>
-				</ul> 
+
+
+				<ol class="classes_in_term">
+					
+					<li>
+						<form>
+							<label>Title:</label>
+							<input type="text" id="class_input">
+							<label>URL:</label> 
+							<input type="text" id="URL_input">
+							<label>Description:</label>
+							<input type="text" id="desc_input">
+							<input type="button" value="add Class" class="<?php echo htmlspecialchars($termsFound["id"]); ?>" onclick="addClass(<?=$termsFound["id"]?>)"> 
+						</form>
+					</li>
+				</ol> 
+
+
 			</div>
 			<?php	
 		}
