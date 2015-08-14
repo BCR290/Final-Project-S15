@@ -34,14 +34,7 @@
             	if (xhr.status == 200) {
 	            	//console.log();
 	                document.getElementById("the_place_for_terms").innerHTML = xhr.responseText;
-	                //alltheusersterms = xhr.responseText.split("|");
-	                // var aterm = document.createElement("div").class = "Aterm"
-	                // for(var i = 0; i < data.length; i++) {
-	                // 	var holder = document.getElementById("the_place_for_terms");
-	                // 	aterm.innerHTML = data[i];
-	                // 	document.getElementById("the_place_for_terms").appendChild(aterm);
-	                // }
-				    //doThings();
+	               
 				}
             }
            
@@ -85,7 +78,7 @@
 
 	function addClass(term_id) {
 		console.log(term_id);
-		hr.onreadystatechange = function() {
+		xhr.onreadystatechange = function() {
             if (xhr.readyState == 4) {
             	if (xhr.status == 200) {
 	            	//console.log();
@@ -93,6 +86,12 @@
 				}
 			}
 		}
+		var title = document.getElementById("class_input").value;
+		var URL	= document.getElementById("URL_input").value;
+		var desc = document.getElementById("desc_input").value;
+		var data = "&title=" + title + "&URL=" + URL + "&desc=" + desc;
+		xhr.open("GET", "ajax.php?action=createclass" + data + "&term=" + term_id);
+		xhr.send();
 	}
 	
 
