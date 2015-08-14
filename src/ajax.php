@@ -22,7 +22,7 @@
 		while($termsFound = $result->fetch_array(MYSQLI_ASSOC)) {
 			?>
 			<div class="one_term">
-				<div class="term_header"
+				<div class="term_header">
 					<span class="term_titles"><?=$termsFound["term_title"]?></span>
 					<span class="term_year"><?=$termsFound["year"]?></span>
 					<span class="term_season"><?=$termsFound["season"]?></span>
@@ -32,7 +32,17 @@
 				<ol class="classes_in_term">
 					<?php
 						$showTheClasses = $dbc -> prepare("SELECT CLASSES.description, CLASSES.title, URLS.url FROM CLASSES INNER JOIN CLASSES_TERM ON CLASSES.id = CLASSES_TERM.class_id INNER JOIN URLS ON CLASSES.url_id = URLS.id INNER JOIN TERMS ON CLASSES_TERM.term_id = TERMS.id WHERE TERMS.id = ?");
-
+						$showTheClasses -> bind_param("s", $term);
+						$term = $termsFound["id"];
+						$showTheClasses -> execute();
+						$classes = $showTheClasses -> get_result();
+						while($theFoundClasses = $classes -> fetch_array(MYSQLI_ASSOC)) {
+							?>
+							<li>
+								<label><?=$theFoundClasses["title"] ?></label> : <a href="<?php echo htmlspecialchars($theFoundClasses['url']); ?>"> <?=$theFoundClasses["description"]?></a> 
+							</li>
+							<?php
+						}
 
 					?>
 					<li>
