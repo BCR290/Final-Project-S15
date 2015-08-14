@@ -83,7 +83,12 @@
 	</head>
 
 	<body>
+		<form action="login.php">
+			<input type='submit' value='Log In' class = 'buttonInPage' href='login.php' /><br><br>
+		</form>
 		<form id='sign-up' method="POST">
+			
+
 			<fieldset >
 				<h1 class = 'page_title' >Sign Up Right Now!!</h1>
 
@@ -98,7 +103,7 @@
 					echo "<span class=\"error\">That username is not Avaliable</span>";
 				}
 				?>
-				<br>
+				<br><br>
 				<label for='password' ></label>
 				<input class = 'signUP' type='password' name='password1' maxlength="50" placeholder="Password"/>
 				<?php
@@ -106,7 +111,7 @@
 					showError();
 				}
 				?>
-				<br>
+				<br><br>
 				<label for='password' ></label>
 				<input class = 'signUP' type='password' name='password2' maxlength="50" placeholder="Re-enter your Password"/>
 				<?php
@@ -118,7 +123,7 @@
 					echo "<span class=\"error\">The Passwords must match</span>" ;
 				}
 				?>
-				<br>
+				<br><br>
 				<label for='Fname' ></label>
 				<input class ='signUP' type='text' name='Fname'  maxlength="50" id="firstname" placeholder="Your First Name"/>
 				<?php
@@ -126,7 +131,7 @@
 					showError();
 				}
 				?>
-				<br>
+				<br><br>
 				<label for='Lname' ></label>
 				<input class = 'signUP' type='text' name='Lname'  maxlength="50" id="lastname" placeholder="Your Last Name" />
 				<?php
