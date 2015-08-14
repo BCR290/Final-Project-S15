@@ -1,4 +1,8 @@
 <?php
+	session_start();
+
+	//ini_set('display_errors', 1);
+
 	function getdbc() {
 		$dbhost = 'oniddb.cws.oregonstate.edu'; 
 		$dbname = 'smithcr-db';
@@ -17,11 +21,12 @@
 
 	// gets the users
 	$dbc = getdbc();
-	$users = $dbc -> prepare("SELECT username FROM USERS_2 WHERE 1");
+	$users = $dbc -> prepare("SELECT username FROM USERS_2");
 	$users->execute();
 	$result = $users->get_result();
-	$theFoundUsers = $result->fetch_array(MYSQLI_ASSOC);
-
-
+	$usersFound;
+	while($theUsers = $result->fetch_array(MYSQLI_ASSOC)) {
+		$usersFound[] = $theUsers["username"];
+	}
 
 ?>

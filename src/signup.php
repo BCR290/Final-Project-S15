@@ -1,6 +1,10 @@
 <?php
 	include("common.php");
 
+	if(isset($_SESSION["user"])) {
+		header("Location: page.php");
+	}
+
 	// add SQL thing
 	$avaliable = false;
 	$usernameError = $password1Error = $password2Error = $firstnameError = $lastnameError = $passwordMissMatch = false;
@@ -8,10 +12,10 @@
 	if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		if ($_POST["username"] == null) {
 			$usernameError = true;
-			echo "1";
+			//echo "1";
 		} else {
 			$given_username = $_POST["username"];
-			foreach ($theFoundUsers as $username => $name) {
+			foreach ($usersFound as $name) {
 				if(strtolower($given_username) !== strtolower($name)) {
 					$avaliable = true;
 				}
@@ -32,7 +36,7 @@
 			}
 		}
 		if ($_POST["Fname"] == null) {
-			$firstError = true;
+			$firstnameError = true;
 			//echo "6";
 		} 
 		if ($_POST["Lname"] == null) {
@@ -49,6 +53,17 @@
 			$firstname = $_POST["Fname"];
 			$lastname  = $_POST["Lname"];
 			$addUser -> execute();
+
+			$id = $dbc -> prepare("SELECT id FROM USERS_2 WHERE username = ?");
+			$id -> bind_param("s", $user);
+			$user = $_POST['username'];
+			$id -> execute();
+			$result = $id->get_result();
+			$theFoundIds = $result->fetch_array(MYSQLI_ASSOC);
+			$actualId = $theFoundIds["id"];
+
+			$_SESSION["user"] = $actualId;
+
 			header("Location: page.php");
 		}
 
@@ -79,7 +94,7 @@
 				if ($usernameError) {
 					showError();
 				}
-				if (!$avaliable && $_SERVER["REQUEST_METHOD"] == "POST") {
+				if (!$avaliable && $_SERVER["REQUEST_METHOD"] == "POST" && !$usernameError) {
 					echo "<span class=\"error\">That username is not Avaliable</span>";
 				}
 				?>

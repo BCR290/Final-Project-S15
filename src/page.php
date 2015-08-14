@@ -1,4 +1,6 @@
 <?php
+	include("common.php");
+
 	$fName = "firstname";
 	$lName = "lastname";
 ?>
@@ -8,14 +10,20 @@
 	<head>
 		<title>Home Page</title>
 		<link rel="stylesheet" type="text/css" href="style.css">
+		<script src="frontend_logic.js"></script>
 		<script src="business_logic.js"></script>
 
 	</head>
 
 
 	<body>
-		<form id = "homepage">
-			<input type='submit' name='submit' value='Log Out' id="logout" /><br>
+		
+
+		<div id = "homepage">	
+			<form action="logout.php" method="POST">
+				<input type='submit' name='submit' value='Log Out' id="logout" /><br>
+			</form>
+
 			<input type='submit' name='submit' value='Search' id="search" /><br>
 			<input type='text' name='User' id="user_home" placeholder = "Username is here" /><br>
 
@@ -25,30 +33,49 @@
 					<p>class list</p><br>
 				</div>
 				
-				<div>	
-					<div id = "term_onclick"></div>
-					
+				<div id="main">	
 
-					<input type = "button" value='Add a Term' id="termBtn" onclick="addTerm()" />
+
+					<div id="the_place_for_terms">
+						
+					</div>
+
+					<div id = "add_term" style="display: none">
+						<form>
+							<label>Term Title</label>
+							<input name="term_title_input" id="term_title_input" type="text">
+							<span class="error" id="notitle"></span>
+							<br>
+							<label>Term Quarter</label>
+							<select id="quarter_input" name="quarter_input">
+								<option></option>
+								<option value="fall">Fall</option>
+								<option value="winter">Winter</option>
+								<option value="spring">Spring</option>
+								<option value="summer">Summer</option>
+							</select>
+							<br>
+							<label>Term year</label>
+							<select id="year_input" name="year_input">
+								<option></option>
+								<?php
+								for($i=1990; $i <= 2050; $i++) {
+									echo "<option value=\"$i\">$i</option>";
+								}
+								?>
+							</select>
+							<br>
+							<input type = "button" value='submit term' id="termBtn" onclick="submitTerm()" />
+							<input type = "button" value='canecl' id="cancel_termBtn" onclick="cancelTerm()" />
+						</form>
+					</div>
+					
+					<button id="addtermBtn" onclick="addTerm()" style="display: block"> Add a Term </button>
 				</div>
 			</fieldset>
 
-		</form>
-		
+		</div>
 	</body>
 
 </html>
 
-<script>
-
-	//var term = document.getElementById("termBtn");
-	function addTerm(){
-		console.log("pop");
-		var term_onclick = document.getElementById("term_onclick");
-		term_onclick.innerHTML="Term name <input type='text' name='Terms' maxlength=\"50\" id=\"TermBox\" placeholder = \"Enter the Term here\" /><br><input type='button' value='Add Class' id=\"classBtn\" />";
-
-	}
-
-
-
-</script>

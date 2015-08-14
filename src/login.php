@@ -1,6 +1,10 @@
 <?php
 	include("common.php");
 
+	if(isset($_SESSION["user"])) {
+		header("Location: page.php");
+	}
+
 	if ($_SERVER['REQUEST_METHOD'] == 'POST' ) {
 		//print_r($_POST);
 		if($_POST['submit'] == 'Log-In') {
@@ -23,6 +27,7 @@
 			$theFoundPWords = $result->fetch_array(MYSQLI_ASSOC);
 			$actualPWord = $theFoundPWords["password"];
 			if($actualPWord == $_POST['pass']) {
+				$_SESSION["user"] = $actualId;
 				header('Location: page.php');
 				echo 'login success';
 				echo '3 ' . $actualPWord;
@@ -52,8 +57,10 @@
 				<form method="POST">
 					<br><input type="text" name="user" size="40" id="username" placeholder="Username"><br>
 					<br><input type="password" name="pass" size="40" id="password" placeholder="Password"><br><br>
-					<input id="signup_button" type="submit" name="submit" value="Sign-Up!">
 					<input id="login_button" type="submit" name="submit" value="Log-In">
+				</form>
+				<form action="signup.php">
+					<input id="signup_button" type="submit" value="Sign-Up!" href="signup.php">
 				</form>
 			</fieldset>
 		</div>
