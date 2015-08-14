@@ -82,7 +82,18 @@
 		
 	}
 
-	
+
+	function addClass(term_id) {
+		console.log(term_id);
+		hr.onreadystatechange = function() {
+            if (xhr.readyState == 4) {
+            	if (xhr.status == 200) {
+	            	//console.log();
+	                document.getElementById("the_place_for_terms").innerHTML = xhr.responseText;
+				}
+			}
+		}
+	}
 	
 
 
