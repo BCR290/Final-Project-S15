@@ -29,6 +29,7 @@
 	}
 
 	var loadinterms = function() {
+		document.getElementById("the_place_for_terms").innerHTML = "";
 		xhr.onreadystatechange = function() {
             if (xhr.readyState == 4) {
             	if (xhr.status == 200) {
@@ -36,8 +37,7 @@
 	                document.getElementById("the_place_for_terms").innerHTML = xhr.responseText;
 	               
 				}
-            }
-           
+            }    
         }	
 		xhr.open("GET", "ajax.php?action=showtheterms", true);
 		xhr.send();
@@ -66,15 +66,15 @@
 			xhr.onreadystatechange = function() {
 	            if (xhr.readyState == 4 && xhr.status == 200) {
 	                //document.getElementById("the_place_for_terms").innerHTML = xhr.responseText;
+	                loadinterms();
 	            }
 	        }
 			xhr.open("GET", "ajax.php?action=createterm" + data, true);
 			xhr.send();
-			//loadinterms();
+			
 		}
 		
 	}
-
 
 	function addClass(term_id) {
 		console.log(term_id);
@@ -82,7 +82,8 @@
             if (xhr.readyState == 4) {
             	if (xhr.status == 200) {
 	            	//console.log();
-	                document.getElementById("the_place_for_terms").innerHTML = xhr.responseText;
+	               // document.getElementById("the_place_for_terms").innerHTML = xhr.responseText;
+	               loadinterms();
 				}
 			}
 		}
@@ -93,10 +94,5 @@
 		xhr.open("GET", "ajax.php?action=createclass" + data + "&term=" + term_id);
 		xhr.send();
 	}
-	
-
-
-
-
 
 //}());
