@@ -18,6 +18,9 @@ fieldset{
 	width:96%;
 	background-color:#BCBCB4;
     border-radius: 8px;
+    margin-left: auto;
+    margin-right: auto;
+
 }
 
 .logIN{
@@ -153,4 +156,53 @@ fieldset{
 #searchBtn:hover{
 	background-color:#6A9DEB;
 
+}
+
+
+/*for adding terms in page.php*/
+
+.cancel{
+	background-color: #0066FF;
+	color:white;
+	font-family: 'Yanone Kaffeesatz';
+	margin-right:3%;
+    font-size: 1.2em;
+    border-radius: 8px;
+}
+
+.cancel:hover{
+	background-color:#6A9DEB;
+
+}
+
+.addTermBtn{
+	background-color: #008F00;
+	color:white;
+	font-family: 'Yanone Kaffeesatz';
+	margin-right:3%;
+    font-size: 1.2em;
+    border-radius: 8px;
+}
+
+.addTermBtn:hover{
+	background-color: #70DB70;
+}
+
+#addtermBtn{
+	background-color: #008F00;
+	color:white;
+	font-family: 'Yanone Kaffeesatz';
+	margin-right:3%;
+    font-size: 1.2em;
+    border-radius: 8px;
+}
+
+#addtermBtn:hover{
+	background-color: #70DB70;
+}
+
+.page_title{
+	background-color: #BCBCB8;
+	font-size: 1.8em;
+	font-family: helvetica;
 }
