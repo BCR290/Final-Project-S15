@@ -21,14 +21,13 @@
 
 		<div id = "homepage">	
 			<form action="logout.php" method="POST">
-				<input type='submit' name='submit' value='Log Out' id="logout" /><br>
+				<br><input type='submit' name='submit' value='Log Out' class = 'buttonInPage' />
 			</form>
 
-			<input type='submit' name='submit' value='Search' id="search" /><br>
-			<input type='text' name='User' id="user_home" placeholder = "Username is here" /><br>
+			<input type='submit' name='submit' value='Search' class = 'buttonInPage' /><br><br>
 
 			<fieldset id = "home_page">
-				<h1 id = "homepage_title">All your Terms and Classes are here!</h1>
+				<h1 class = "page_title">All your Terms and Classes are here!</h1>
 				<div>
 					<p>class list</p><br>
 				</div>
@@ -65,8 +64,8 @@
 								?>
 							</select>
 							<br>
-							<input type = "button" value='submit term' id="termBtn" onclick="submitTerm()" />
-							<input type = "button" value='canecl' id="cancel_termBtn" onclick="cancelTerm()" />
+							<br><input class = 'addTermBtn' type = "button" value='Submit term' onclick="submitTerm()" />
+							<input class = 'cancel' type = "button" value='Cancel' onclick="cancelTerm()" />
 						</form>
 					</div>
 					
