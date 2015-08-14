@@ -14,7 +14,7 @@
 	}
 
 	if ($action == "showtheterms") {
-		$showtheterms = $dbc -> prepare("SELECT term_title, year, season, id FROM TERMS WHERE student_id = ?");
+		$showtheterms = $dbc -> prepare("SELECT term_title, year, season, id FROM TERMS WHERE student_id = ? ORDER BY year DESC");
 	 	$showtheterms -> bind_param("i", $user);
 		$user = $_SESSION["user"];
 		$showtheterms -> execute();
@@ -31,7 +31,7 @@
 
 				<ol class="classes_in_term">
 					<?php
-						$showTheClasses = $dbc -> prepare("SELECT CLASSES.description, CLASSES.title, URLS.url FROM CLASSES INNER JOIN CLASSES_TERM ON CLASSES.id = CLASSES_TERM.class_id INNER JOIN URLS ON CLASSES.url_id = URLS.id INNER JOIN TERMS ON CLASSES_TERM.term_id = TERMS.id WHERE TERMS.id = ?");
+						$showTheClasses = $dbc -> prepare("SELECT CLASSES.description, CLASSES.title, URLS.url FROM CLASSES INNER JOIN CLASSES_TERM ON CLASSES.id = CLASSES_TERM.class_id INNER JOIN URLS ON CLASSES.url_id = URLS.id INNER JOIN TERMS ON CLASSES_TERM.term_id = TERMS.id WHERE TERMS.id = ? ");
 						$showTheClasses -> bind_param("s", $term);
 						$term = $termsFound["id"];
 						$showTheClasses -> execute();
@@ -72,7 +72,7 @@
 		$actualId = "";
 		if (count($idsFound) >= 1) {
 			$actualId = $idsFound["id"];
-			echo "id found: $actualId";
+			//echo "id found: $actualId";
 		} else {
 			$createAurl = $dbc -> prepare("INSERT INTO URLS (url) VALUES (?)");
 			$createAurl -> bind_param("s", $url);
@@ -82,7 +82,7 @@
 			$result = $getClassId->get_result();
 			$founcId = $result->fetch_array(MYSQLI_ASSOC);
 			$actualId = $founcId["id"];
-			echo "id created: $actualId";
+			//echo "id created: $actualId";
 		}
 
 		
@@ -105,7 +105,7 @@
 		$idsFound = $result->fetch_array(MYSQLI_ASSOC);
 		$actualclassId = $idsFound["id"];
 
-		echo "stupid ass class $actualclassId";
+		//echo "stupid ass class $actualclassId";
 
 		$createclassterm = $dbc -> prepare("INSERT INTO CLASSES_TERM (class_id, term_id) VALUES (?, ?)");
 		$createclassterm -> bind_param("ss", $class_id, $term_id);
