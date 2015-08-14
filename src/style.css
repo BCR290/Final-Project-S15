@@ -17,28 +17,16 @@ h1{
 fieldset{
 	width:96%;
 	background-color:#BCBCB4;
-    -webkit-border-radius: 8px;
-    -moz-border-radius: 8px;
     border-radius: 8px;
 }
 
-#username{
+.logIN{
 	margin-left: 70px;
-	-webkit-border-radius: 8px;
-    -moz-border-radius: 8px;
     border-radius: 8px;
     height: 30px;
     font-size: 18px;
 }
 
-#password{
-	margin-left: 70px;
-	-webkit-border-radius: 8px;
-    -moz-border-radius: 8px;
-    border-radius: 8px;
-    height: 30px;
-    font-size: 18px;
-}
 
 #login_button{
 	float:right;
@@ -47,11 +35,8 @@ fieldset{
 	background-color: #0066FF;
 	color:white;
 	font-family: 'Yanone Kaffeesatz';
-	font-weight: 550;
-    font-size: 1.2em;
 
-    -webkit-border-radius: 8px;
-    -moz-border-radius: 8px;
+    font-size: 1.2em;
     border-radius: 8px;
 }
 
@@ -61,16 +46,11 @@ fieldset{
 
 
 #signup_button{
-	float:center;
 	margin-left: 180px;
 	background-color: #FF0000;
 	color:white;
 	font-family: 'Yanone Kaffeesatz';
-	font-weight: 550;
     font-size: 1.2em;
-
-    -webkit-border-radius: 8px;
-    -moz-border-radius: 8px;
     border-radius: 8px;
 }
 
@@ -79,17 +59,11 @@ fieldset{
 }
 
 #signup{
-	float:center;
 	background-color: #008F00;
 	color:white;
 	font-family: 'Yanone Kaffeesatz';
-	font-weight: 550;
-    font-size: 0.7em;
+    font-size: 0.8em;
     width: 500px;
-  
-
-    -webkit-border-radius: 8px;
-    -moz-border-radius: 8px;
     border-radius: 8px;
 }
 
@@ -97,54 +71,16 @@ fieldset{
 	background-color: #70DB70;
 }
 
-#uname{
+.signUP{
 
-	-webkit-border-radius: 8px;
-    -moz-border-radius: 8px;
-    border-radius: 8px;
-    height: 40px;
-    font-size: 20px;
-    width:500px;
-}
-#pword{
-	
-	-webkit-border-radius: 8px;
-    -moz-border-radius: 8px;
     border-radius: 8px;
     height: 40px;
     font-size: 20px;
     width:500px;
 }
 
-#Re-password{
-	
-	-webkit-border-radius: 8px;
-    -moz-border-radius: 8px;
-    border-radius: 8px;
-    height: 40px;
-    font-size: 20px;
-    width: 500px;
-}
 
-#Fname {
-	
-	-webkit-border-radius: 8px;
-    -moz-border-radius: 8px;
-    border-radius: 8px;
-    height: 40px;
-    font-size: 20px;
-    width: 500px;
-}
 
-#Lname{
-	
-	-webkit-border-radius: 8px;
-    -moz-border-radius: 8px;
-    border-radius: 8px;
-    height: 40px;
-    font-size: 20px;
-    width: 500px;
-}
 #sign-up{
 	text-align: center;
 	background-color: white;
@@ -154,26 +90,13 @@ fieldset{
 	text-shadow: 0px 1px 0 rgba(0,0,0,0.25);
 }
 
-#brad{
-	width:96%;
-	background-color:#BCBCB4;
-    -webkit-border-radius: 8px;
-    -moz-border-radius: 8px;
-    border-radius: 8px;
-    height: 100%;
-}
+
 #home{
-	float:center;
 	background-color: #008F00;
 	color:white;
 	font-family: 'Yanone Kaffeesatz';
-	font-weight: 550;
     font-size: 0.7em;
     width: 500px;
-  
-
-    -webkit-border-radius: 8px;
-    -moz-border-radius: 8px;
     border-radius: 8px;
 }
 #home:hover{
@@ -181,14 +104,12 @@ fieldset{
 }
 
 #home_page{
-	float: center;
 	width : 96%;
 	height: 500px;
 }
 
 #TermBox{
 	margin-bottom: 10px;
-	float:bottom;
 }
 
 /* The display of the terms */
