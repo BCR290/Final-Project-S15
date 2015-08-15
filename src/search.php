@@ -10,6 +10,7 @@
 	}
 	
 	if($_GET["searchBtn"] == "SEARCH") {
+		$query = "%" .$_GET["searchBox"] ."%";
 		$getURLS = $dbc -> prepare("SELECT CLASSES.title, CLASSES.description, URLS.url
 									FROM CLASSES
 									INNER JOIN CLASSES_TERM ON CLASSES.id = CLASSES_TERM.class_id
@@ -17,19 +18,14 @@
 									INNER JOIN TERMS ON CLASSES_TERM.term_id = TERMS.id
 									WHERE CLASSES.title LIKE  ?
 									OR CLASSES.description LIKE  ?
-									OR URLS.url LIKE  ?
-									AND TERMS.id <> ?");
-		$getURLS -> bind_param("ssss", $query1, $query2, $query3, $term);
-		$query1 = $_GET["searchBox"];
-		$query2 = $_GET["searchBox"];
-		$query3 = $_GET["searchBox"];
-		$term = $_GET["term"];
+									OR URLS.url LIKE  ?");
+		$getURLS -> bind_param("sss", $query1, $query2, $query3);
+		$query1 = $query;
+		$query2 = $query;
+		$query3 = $query;
 		$getURLS -> execute();
 		$allTheURLS = $getURLS -> get_result();
 	}
-
-
-
 
 ?>
 
@@ -72,13 +68,13 @@
 	
 							<tr id="result_<?php echo htmlspecialchars($num); ?>">
 								<td>
-									<label>Title:</label><input type="text" id="class_input_<?php echo htmlspecialchars($num); ?>">
+									<label>Title:</label><input value="<?php echo htmlspecialchars($URL['title']); ?>" type="text" id="class_input_<?php echo htmlspecialchars($num); ?>">
 								</td>
 								<td>
 									<label>URL:</label> <a id="URL_input_<?php echo htmlspecialchars($num);?>" href="<?php echo htmlspecialchars($URL["url"]);?>"><?php echo htmlspecialchars($URL["url"]);?></a>
 								</td>
 								<td>
-									<label>Description:</label><input type="text" id="desc_input_<?php echo htmlspecialchars($num); ?>">
+									<label>Description:</label><input value="<?php echo htmlspecialchars($URL[description]); ?>" type="text" id="desc_input_<?php echo htmlspecialchars($num); ?>">
 								</td>
 								
 								<td>
