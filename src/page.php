@@ -1,6 +1,7 @@
 <?php
 	include("common.php");
 
+
 	$fName = "firstname";
 	$lName = "lastname";
 ?>
@@ -15,21 +16,18 @@
 
 	</head>
 
-
 	<body>
-		
-
 		<div id = "homepage">	
 			<form action="logout.php" method="POST">
 				<br><input type='submit' name='submit' value='Log Out' class = 'buttonInPage' />
 			</form>
 
-			<form action="search.php">
+			<!--<form action="search.php">
 				<input type='submit' name='submit' value='Search' class = 'buttonInPage' href='search.php' /><br><br>
-			</form>
+			</form>-->
 
 			<fieldset id = "home_page">
-				<h1 class = "page_title">Term sites</h1>
+				<h1 class = "page_title">References to Remember</h1>
 				
 				<div id="main">	
 

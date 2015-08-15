@@ -77,7 +77,6 @@
 	}
 
 	function addClass(term_id) {
-		console.log(term_id);
 		xhr.onreadystatechange = function() {
             if (xhr.readyState == 4) {
             	if (xhr.status == 200) {
@@ -94,5 +93,13 @@
 		xhr.open("GET", "ajax.php?action=createclass" + data + "&term=" + term_id);
 		xhr.send();
 	}
+
+	function GoToSearchURL(term_id) {
+		window.open("search.php?term=" + term_id);
+	}
+
+	
+
+
 
 //}());

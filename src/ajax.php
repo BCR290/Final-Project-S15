@@ -43,13 +43,16 @@
 						$showTheClasses -> execute();
 						$classes = $showTheClasses -> get_result();
 						while($theFoundClasses = $classes -> fetch_array(MYSQLI_ASSOC)) {
+							$desc_being = $theFoundClasses["description"];
+							if ($theFoundClasses["description"] == "" || $theFoundClasses["description"] == null){
+								$desc_being = $theFoundClasses["url"];
+							}
 							?>
 							<li>
-								<label><?=$theFoundClasses["title"] ?></label> : <a href="<?php echo htmlspecialchars($theFoundClasses['url']); ?>"> <?=$theFoundClasses["description"]?></a> 
+								<label><?=$theFoundClasses["title"] ?></label>  <a href="<?php echo htmlspecialchars($theFoundClasses['url']); ?>"> <?=$desc_being?></a> 
 							</li>
 							<?php
 						}
-
 					?>
 					<br>
 					<li>
@@ -60,7 +63,8 @@
 							<input type="text" id="URL_input_<?php echo htmlspecialchars($termsFound["id"]); ?>">
 							<label>Description:</label>
 							<input type="text" id="desc_input_<?php echo htmlspecialchars($termsFound["id"]); ?>">
-							<input type="button" value="add URL" class="<?php echo htmlspecialchars($termsFound["id"]); ?>" onclick="addClass(<?=$termsFound["id"]?>)"> 
+							<input type="button" value="add URL" class="<?php echo htmlspecialchars($termsFound["id"]); ?>" onclick="addClass(<?=$termsFound["id"]?>)">
+							<input type="button" value="Search for URL" class="<?php echo htmlspecialchars($termsFound["id"]); ?>" onclick="GoToSearchURL(<?=$termsFound["id"]?>)"> 
 						</form>
 					</li>
 				</ol> 

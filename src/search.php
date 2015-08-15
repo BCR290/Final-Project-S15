@@ -1,4 +1,12 @@
 <?php
+	include("common.php");
+
+	$getURLS = $dbc -> prepare("SELECT url FROM URLS");
+	$getURLS -> execute();
+	$allTheURLS = $getURLS -> get_result();
+	
+
+
 
 ?>
 
@@ -26,7 +34,13 @@
 			<fieldset id='search_page'>
 				<br><input type='text' name='searchBox' id='searchBox' placeholder = "Enter the key word here" />
 				<input type='submit' name='searchBtn' value='SEARCH' id = 'searchBtn'/><br><br>
-
+				<?php
+				while($URL = $allTheURLS -> fetch_array(MYSQLI_ASSOC)) {
+					?>
+					<a href="<?php echo htmlspecialchars($URL["url"]);?>"><?php echo htmlspecialchars($URL["url"]);?></a><br>
+					<?php 
+				}
+				?>
 
 
 			</fieldset>
