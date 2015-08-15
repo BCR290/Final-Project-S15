@@ -6,7 +6,7 @@
 	}
 
 	// add SQL thing
-	$avaliable = false;
+	$avaliable = true;
 	$usernameError = $password1Error = $password2Error = $firstnameError = $lastnameError = $passwordMissMatch = false;
 
 	if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -16,9 +16,9 @@
 		} else {
 			$given_username = $_POST["username"];
 			foreach ($usersFound as $name) {
-				if(strtolower($given_username) !== strtolower($name)) {
-					$avaliable = true;
-				}
+				if(strtolower($given_username) === strtolower($name)) {
+					$avaliable = false;
+				} 
 			}
 		}
 		if ($_POST["password1"] == null) {

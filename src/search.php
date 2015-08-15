@@ -1,10 +1,33 @@
 <?php
 	include("common.php");
 
-	$getURLS = $dbc -> prepare("SELECT url FROM URLS");
-	$getURLS -> execute();
-	$allTheURLS = $getURLS -> get_result();
 	
+
+	if(!isset($_GET["action"])) {
+		$getURLS = $dbc -> prepare("SELECT url FROM URLS");
+		$getURLS -> execute();
+		$allTheURLS = $getURLS -> get_result();
+	}
+	
+	if($_GET["searchBtn"] == "SEARCH") {
+		$getURLS = $dbc -> prepare("SELECT CLASSES.title, CLASSES.description, URLS.url
+									FROM CLASSES
+									INNER JOIN CLASSES_TERM ON CLASSES.id = CLASSES_TERM.class_id
+									INNER JOIN URLS ON CLASSES.url_id = URLS.id
+									INNER JOIN TERMS ON CLASSES_TERM.term_id = TERMS.id
+									WHERE CLASSES.title LIKE  ?
+									OR CLASSES.description LIKE  ?
+									OR URLS.url LIKE  ?
+									AND TERMS.id <> ?");
+		$getURLS -> bind_param("ssss", $query1, $query2, $query3, $term);
+		$query1 = $_GET["searchBox"];
+		$query2 = $_GET["searchBox"];
+		$query3 = $_GET["searchBox"];
+		$term = $_GET["term"];
+		$getURLS -> execute();
+		$allTheURLS = $getURLS -> get_result();
+	}
+
 
 
 
@@ -32,31 +55,56 @@
 			</form>
 
 			<fieldset id='search_page'>
-				<br><input type='text' name='searchBox' id='searchBox' placeholder = "Enter the key word here" />
-				<input type='submit' name='searchBtn' value='SEARCH' id = 'searchBtn'/><br><br>
+				<form method="GET">
+					<br>
+					<input type='text' name='searchBox' id='searchBox' placeholder = "Enter the key word here" />
+					<input type='submit' name='searchBtn' value='SEARCH' id = 'searchBtn'/>
+					<br><br>
+				</form>
 				<table>
 				<?php
 				$term = $_GET["term"];
 				//echo $term;
+				$num = 0;
 				while($URL = $allTheURLS -> fetch_array(MYSQLI_ASSOC)) {
+					$num++;
 					?>
-					<div class="result">
 	
-							<tr>
+							<tr id="result_<?php echo htmlspecialchars($num); ?>">
 								<td>
-									<label>Title:</label><input type="text" id="class_input_<?php echo htmlspecialchars($term); ?>">
+									<label>Title:</label><input type="text" id="class_input_<?php echo htmlspecialchars($num); ?>">
 								</td>
 								<td>
-									<label>URL:</label> <a id="URL_input_<?php echo htmlspecialchars($term);?>" href="<?php echo htmlspecialchars($URL["url"]);?>"><?php echo htmlspecialchars($URL["url"]);?></a>
+									<label>URL:</label> <a id="URL_input_<?php echo htmlspecialchars($num);?>" href="<?php echo htmlspecialchars($URL["url"]);?>"><?php echo htmlspecialchars($URL["url"]);?></a>
 								</td>
 								<td>
-									<label>Description:</label><input type="text" id="desc_input_<?php echo htmlspecialchars($term); ?>">
+									<label>Description:</label><input type="text" id="desc_input_<?php echo htmlspecialchars($num); ?>">
+								</td>
+								
+								<td>
+									<select name="term_title" id="<?php echo htmlspecialchars($num); ?>">
+									<?php
+										$sterms = $dbc -> prepare("SELECT term_title, id FROM TERMS WHERE student_id = ? ORDER BY year DESC");
+										$sterms -> bind_param("s", $sid);
+										$sid = $_SESSION["user"];
+										$sterms -> execute(); 
+										$termsOfU = $sterms -> get_result();
+										while ($aterm = $termsOfU -> fetch_array(MYSQLI_ASSOC)) {
+										?>
+											<option  value="<?php echo htmlspecialchars($aterm['id']); ?>"><?php echo htmlspecialchars($aterm['term_title']); ?></option>
+										<?php
+										}
+									?>
+									</select>
 								</td>
 								<td>
-									<input type="button" value="add URL" class="<?php echo htmlspecialchars($term); ?>" onclick="addClass(<?=$term?>)"/>
+									<input type="button" value="add URL" class="<?php echo htmlspecialchars($num); ?>" onclick="addClassFromSearch(<?=$num?>)"/>
 								</td>
+								<td>
+									<span id="it_has_been_add_<?php echo htmlspecialchars($num); ?>"></span>
+								</td>
+
 							</tr>
-					<div> 
 					<?php 
 				}
 				?>

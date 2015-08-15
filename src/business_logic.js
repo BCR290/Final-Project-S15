@@ -82,25 +82,49 @@
 	}
 
 	function addClass(term_id) {
-		console.log(term_id);
+		if(document.getElementById("the_place_for_terms") != null ) {
+			console.log(term_id);
+			xhr.onreadystatechange = function() {
+		        if (xhr.readyState == 4) {
+		        	if (xhr.status == 200) {
+		            	//console.log();
+		            	if(document.getElementById("the_place_for_terms") != null ) {
+		               		loadinterms();
+		           		} else {
+		           			document.getElementById("it_has_been_add_" + term_id).innerHTML = xhr.responseText;
+		           		}
+					}
+				}
+			}
+			var title = document.getElementById("class_input_" + term_id).value;
+			var URL =  document.getElementById("URL_input_" + term_id).value;
+			if (URL === undefined) {
+				URL = document.getElementById("URL_input_" + term_id).getAttribute("href");
+			}
+			console.log(URL);
+			var desc = document.getElementById("desc_input_" + term_id).value;
+			var data = "&title=" + title + "&URL=" + URL + "&desc=" + desc;
+			xhr.open("GET", "ajax.php?action=createclass" + data + "&term=" + term_id);
+			xhr.send();
+		}
+	}
+
+	function addClassFromSearch(num) {
+		console.log(num);
 		xhr.onreadystatechange = function() {
             if (xhr.readyState == 4) {
             	if (xhr.status == 200) {
-	            	//console.log();
-	            	if(document.getElementById("the_place_for_terms") != null ) {
-	               		loadinterms();
-	           		}
-				}
+	            	//console.log(); 	
+	           		document.getElementById("result_" + num).innerHTML = "";
+	           	}
 			}
 		}
-		var title = document.getElementById("class_input_" + term_id).value;
-		var URL =  document.getElementById("URL_input_" + term_id).value;
-		if (URL === undefined) {
-			URL = document.getElementById("URL_input_" + term_id).getAttribute("href");
-		}
+		var title = document.getElementById("class_input_" + num).value;	
+			URL = document.getElementById("URL_input_" + num).getAttribute("href");
 		console.log(URL);
-		var desc = document.getElementById("desc_input_" + term_id).value;
+		var desc = document.getElementById("desc_input_" + num).value;
 		var data = "&title=" + title + "&URL=" + URL + "&desc=" + desc;
+		term_id = document.getElementById(num).value;
 		xhr.open("GET", "ajax.php?action=createclass" + data + "&term=" + term_id);
 		xhr.send();
 	}

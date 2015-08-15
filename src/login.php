@@ -2,6 +2,7 @@
 	include("common.php");
 
 	if(isset($_SESSION["user"])) {
+		echo $_SESSION["user"];
 		header("Location: page.php");
 	}
 
@@ -26,7 +27,7 @@
 			$result = $pword->get_result();
 			$theFoundPWords = $result->fetch_array(MYSQLI_ASSOC);
 			$actualPWord = $theFoundPWords["password"];
-			if($actualPWord == $_POST['pass']) {
+			if($actualPWord == $_POST['pass'] && $_POST['pass'] != null) {
 				$_SESSION["user"] = $actualId;
 				header('Location: page.php');
 				echo 'login success';
@@ -49,7 +50,7 @@
 		
 	</head>
 	
-	<img src="20120327161442396.jpg" alt="OSU" />
+	<img src="https://upload.wikimedia.org/wikipedia/commons/c/cb/The_Valley_Library_OSU.png" alt="OSU" />
 	<body >
 
 		<h1 id = "title">Welcome to <br> REFERENCE HOLDER!</h1>

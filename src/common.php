@@ -1,5 +1,7 @@
 <?php
+	session_save_path();
 	session_start();
+	//print_r($_SESSION);
 
 	//ini_set('display_errors', 1);
 
