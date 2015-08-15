@@ -29,18 +29,21 @@
 	}
 
 	var loadinterms = function() {
-		document.getElementById("the_place_for_terms").innerHTML = "";
-		xhr.onreadystatechange = function() {
-            if (xhr.readyState == 4) {
-            	if (xhr.status == 200) {
-	            	//console.log();
-	                document.getElementById("the_place_for_terms").innerHTML = xhr.responseText;
-	               
-				}
-            }    
-        }	
-		xhr.open("GET", "ajax.php?action=showtheterms", true);
-		xhr.send();
+		if(document.getElementById("the_place_for_terms") != null ) {
+	        document.getElementById("the_place_for_terms").innerHTML = "";
+	    
+			xhr.onreadystatechange = function() {
+	            if (xhr.readyState == 4) {
+	            	if (xhr.status == 200) {
+		            	//console.log();
+		                document.getElementById("the_place_for_terms").innerHTML = xhr.responseText;
+		               
+					}
+	            }    
+	        }	
+			xhr.open("GET", "ajax.php?action=showtheterms", true);
+			xhr.send();
+		}
 	}
 
 	var submitTerm = function() {
@@ -66,7 +69,9 @@
 			xhr.onreadystatechange = function() {
 	            if (xhr.readyState == 4 && xhr.status == 200) {
 	                //document.getElementById("the_place_for_terms").innerHTML = xhr.responseText;
-	                loadinterms();
+	                if(document.getElementById("the_place_for_terms") != null ) {
+	               		loadinterms();
+	           		}
 	            }
 	        }
 			xhr.open("GET", "ajax.php?action=createterm" + data, true);
@@ -77,17 +82,23 @@
 	}
 
 	function addClass(term_id) {
+		console.log(term_id);
 		xhr.onreadystatechange = function() {
             if (xhr.readyState == 4) {
             	if (xhr.status == 200) {
 	            	//console.log();
-	               // document.getElementById("the_place_for_terms").innerHTML = xhr.responseText;
-	               loadinterms();
+	            	if(document.getElementById("the_place_for_terms") != null ) {
+	               		loadinterms();
+	           		}
 				}
 			}
 		}
 		var title = document.getElementById("class_input_" + term_id).value;
-		var URL	= document.getElementById("URL_input_" + term_id).value;
+		var URL =  document.getElementById("URL_input_" + term_id).value;
+		if (URL === undefined) {
+			URL = document.getElementById("URL_input_" + term_id).getAttribute("href");
+		}
+		console.log(URL);
 		var desc = document.getElementById("desc_input_" + term_id).value;
 		var data = "&title=" + title + "&URL=" + URL + "&desc=" + desc;
 		xhr.open("GET", "ajax.php?action=createclass" + data + "&term=" + term_id);
@@ -95,10 +106,10 @@
 	}
 
 	function GoToSearchURL(term_id) {
-		window.open("search.php?term=" + term_id);
+		window.location.assign("search.php?term=" + term_id);
 	}
 
-	
+
 
 
 

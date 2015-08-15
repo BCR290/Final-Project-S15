@@ -60,7 +60,7 @@
 							<label>Title:</label>
 							<input type="text" id="class_input_<?php echo htmlspecialchars($termsFound["id"]); ?>">
 							<label>URL:</label> 
-							<input type="text" id="URL_input_<?php echo htmlspecialchars($termsFound["id"]); ?>">
+							<input type="text" id="URL_input_<?php echo htmlspecialchars($termsFound["id"]); ?>" value="https://">
 							<label>Description:</label>
 							<input type="text" id="desc_input_<?php echo htmlspecialchars($termsFound["id"]); ?>">
 							<input type="button" value="add URL" class="<?php echo htmlspecialchars($termsFound["id"]); ?>" onclick="addClass(<?=$termsFound["id"]?>)">
@@ -124,7 +124,7 @@
 		$term_id = $_REQUEST["term"];
 		$createclassterm -> execute();
 
-		//echo "poop";
+		echo "Added!";
 	}
 	
 	$given = $_REQUEST["user_try"];

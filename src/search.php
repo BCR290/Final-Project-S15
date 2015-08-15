@@ -34,13 +34,33 @@
 			<fieldset id='search_page'>
 				<br><input type='text' name='searchBox' id='searchBox' placeholder = "Enter the key word here" />
 				<input type='submit' name='searchBtn' value='SEARCH' id = 'searchBtn'/><br><br>
+				<table>
 				<?php
+				$term = $_GET["term"];
+				//echo $term;
 				while($URL = $allTheURLS -> fetch_array(MYSQLI_ASSOC)) {
 					?>
-					<a href="<?php echo htmlspecialchars($URL["url"]);?>"><?php echo htmlspecialchars($URL["url"]);?></a><br>
+					<div class="result">
+	
+							<tr>
+								<td>
+									<label>Title:</label><input type="text" id="class_input_<?php echo htmlspecialchars($term); ?>">
+								</td>
+								<td>
+									<label>URL:</label> <a id="URL_input_<?php echo htmlspecialchars($term);?>" href="<?php echo htmlspecialchars($URL["url"]);?>"><?php echo htmlspecialchars($URL["url"]);?></a>
+								</td>
+								<td>
+									<label>Description:</label><input type="text" id="desc_input_<?php echo htmlspecialchars($term); ?>">
+								</td>
+								<td>
+									<input type="button" value="add URL" class="<?php echo htmlspecialchars($term); ?>" onclick="addClass(<?=$term?>)"/>
+								</td>
+							</tr>
+					<div> 
 					<?php 
 				}
 				?>
+				</table>
 
 
 			</fieldset>
