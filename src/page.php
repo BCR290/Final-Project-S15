@@ -24,7 +24,9 @@
 				<br><input type='submit' name='submit' value='Log Out' class = 'buttonInPage' />
 			</form>
 
-			<input type='submit' name='submit' value='Search' class = 'buttonInPage' /><br><br>
+			<form action="search.php">
+				<input type='submit' name='submit' value='Search' class = 'buttonInPage' href='search.php' /><br><br>
+			</form>
 
 			<fieldset id = "home_page">
 				<h1 class = "page_title">Term sites</h1>
