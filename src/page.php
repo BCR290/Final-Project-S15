@@ -27,10 +27,7 @@
 			<input type='submit' name='submit' value='Search' class = 'buttonInPage' /><br><br>
 
 			<fieldset id = "home_page">
-				<h1 class = "page_title">All your Terms and Classes are here!</h1>
-				<div>
-					<p>class list</p><br>
-				</div>
+				<h1 class = "page_title">Term sites</h1>
 				
 				<div id="main">	
 

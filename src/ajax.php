@@ -19,14 +19,20 @@
 		$user = $_SESSION["user"];
 		$showtheterms -> execute();
 		$result = $showtheterms->get_result();
+		$num = 160;
 		while($termsFound = $result->fetch_array(MYSQLI_ASSOC)) {
+			$num += 7;
+			if ($num > 210) {
+			 	$num -= 50;
+			} 
+	
 			?>
-			<div class="one_term">
+			<div class="one_term" style="background-color: rgb(<?php echo htmlspecialchars($num);?>, <?php echo htmlspecialchars($num);?>, <?php echo htmlspecialchars($num);?>);">
 				<div class="term_header">
 					<span id="term_titles"><?=$termsFound["term_title"]?></span>
 					<span id="term_year"><?=$termsFound["year"]?></span>
 					<span id="term_season"><?=$termsFound["season"]?></span>
-					<span><?=$termsFound["id"]?></span>		
+					<span id="term_season"><?=$termsFound["id"]?></span>
 				</div>
 
 				<ol class="classes_in_term">
@@ -45,6 +51,7 @@
 						}
 
 					?>
+					<br>
 					<li>
 						<form>
 							<label>Title:</label>

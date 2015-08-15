@@ -108,7 +108,7 @@ fieldset{
 
 #home_page{
 	width : 96%;
-	height: 500px;
+	
 }
 
 #TermBox{
@@ -199,6 +199,32 @@ fieldset{
 
 #addtermBtn:hover{
 	background-color: #70DB70;
+}
+
+/* terms */
+
+.term_header {
+	font-size: 20px;
+	margin-left: 40px;
+	margin-right: 40px;
+	background-color: white;
+	border: solid, 1px, white;
+	padding: 2px;
+	padding-left: 30px; 
+	border-radius: 2px;
+}
+
+.one_term {
+	font-family: helvetica;
+	width: 80%;
+	margin-left: auto;
+	margin-right: auto;
+	padding:10px;
+	padding-left: 60px;
+	padding-right: 60px;
+	margin-top: 3px;
+	border-radius: 5px;
+	border: 2px solid black;
 }
 
 .page_title{

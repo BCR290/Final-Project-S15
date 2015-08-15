@@ -97,7 +97,7 @@
 				if (!$avaliable && $_SERVER["REQUEST_METHOD"] == "POST" && !$usernameError) {
 					echo "<span class=\"error\">That username is not Avaliable</span>";
 				}
-				?>
+				?>ermsFound["id"];
 				<br>
 				<label for='password' ></label>
 				<input class = 'signUP' type='password' name='password1' maxlength="50" placeholder="Password"/>
