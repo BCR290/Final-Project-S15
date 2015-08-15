@@ -49,11 +49,12 @@
 		
 	</head>
 	
+	<img src="20120327161442396.jpg" alt="OSU" />
+	<body >
 
-	<body id="body-color">
-		<h1 id = "title">Welcome to our site!</h1>
+		<h1 id = "title">Welcome to <br> REFERENCE HOLDER!</h1>
 		<div id="Sign-In">
-			<fieldset>
+			<fieldset id="body-color">
 				<form method="POST">
 
 
